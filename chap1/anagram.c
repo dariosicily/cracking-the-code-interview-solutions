@@ -6,7 +6,7 @@ int are_anagrams(const char *s1, const char *s2) {
     int index1, index2;
     size_t l1 = strlen(s1), l2 = strlen(s2), i;
 
-    /*if the strings have different lenghts are not anagrams */
+    /*if the strings have different lengths are not anagrams */
     if (l1 != l2) return 0;
 
     /* count the frequencies of characters */
@@ -16,8 +16,8 @@ int are_anagrams(const char *s1, const char *s2) {
         ++alphabet[index1];
         --alphabet[index2];
     }
-    /* all the alphabet letters should be 0, otherwise they are not
-     * anagram */
+    /* all the alphabet letters should be 0, otherwise the strings are not
+     * anagrams */
     for (i = 0; i < 26; ++i)
         if (alphabet[i] != 0) return 0;
     
