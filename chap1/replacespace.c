@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+/*replace all spaces in a string with the substring %20*/
 char *replace_space(char *s) {
     int i = 0, length;
     while(s[i]) {
@@ -21,7 +22,8 @@ char *replace_space(char *s) {
 int main() {
     
    /* assume that string contains enough space to replace spaces with 
-     * %20 */
+     * %20 , the user should controll the space before using the 
+     * function*/
    char s1[100] = " hello world! ";
    printf("%s\n", replace_space(s1));
    return 0;

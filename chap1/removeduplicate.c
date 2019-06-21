@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+/* remove all dup chars from a string*/
 char* removeduplicate(char *s) {
     size_t length = strlen(s), i , j, index = 0;
     int duplicate;

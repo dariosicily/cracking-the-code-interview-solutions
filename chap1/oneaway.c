@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* check if str1 can be obtained from string2 adding, deleting, removing
+ * at last one char */
 int one_way(const char* str1, const char* str2) {
     int len1 = strlen(str1), len2 = strlen(str2), i, j;
     int nchars = 0;

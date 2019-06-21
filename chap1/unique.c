@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+/* check if the string contains only unique chars using an auxiliary 
+ * buffer to store frequencies*/
 int has_unique(const char *s) {
     int index;
     int alphabet[26] = { 0 };
@@ -19,6 +21,7 @@ int has_unique(const char *s) {
     return 1;
 }
 
+/* check if the string contains only unique chars without using buffer*/
 int has_unique_brute_force(const char *s) {
     size_t i, j, l = strlen(s);
 

@@ -11,7 +11,8 @@ int substring(const char *s1, const char *s2) {
         if (!strncmp(s1, s2 + i, l1)) return 1;
     return 0;
 }
-
+/* check if s1 is a rotation of s2, ex."erbottlewat" is a rotation of 
+ * "waterbottle"*/
 int is_rotation(const char *s1, const char *s2) {
     size_t l1 = strlen(s1), l2 = strlen(s2);
     int result = 0;

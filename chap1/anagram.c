@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+/*check if one string is an anagram of another, it uses an int array
+ * called alphabet to store frequencies of chars in both strings, add
+ * 1 for s1 and subtract 1 for s2*/
 int are_anagrams(const char *s1, const char *s2) {
-    int alphabet[26] = {0};
+    int alphabet[26] = { 0 };
     int index1, index2;
     size_t l1 = strlen(s1), l2 = strlen(s2), i;
 
