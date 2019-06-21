@@ -37,9 +37,8 @@ void delete_list(Node **head) {
 }
 
 void print_list(Node* head) {
-    while (head) {
+    for (; head; head = head -> next) {
         printf("%d ", head -> data);
-        head = head -> next;
     }
     printf("\n");
 }
