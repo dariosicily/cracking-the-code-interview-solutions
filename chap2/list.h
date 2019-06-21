@@ -1,3 +1,6 @@
+#ifndef LIST_H
+#define LIST_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -22,10 +25,11 @@ int pop(Node **head) {
     return data;
 }
 
-void create_list(Node **head, int data[], size_t size) {
+Node *create_list(Node **head, int data[], size_t size) {
     int i;
     for (i = size - 1; i >= 0; --i) 
         push(head, data[i]);
+    return *head;
 }
 
 void delete_list(Node **head) {
@@ -39,5 +43,5 @@ void print_list(Node* head) {
     }
     printf("\n");
 }
-
+#endif
 

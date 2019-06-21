@@ -2,12 +2,14 @@
 #include <string.h>
 #include "list.h"
 
-int list_to_int(Node * head) {
+/* transform the list of int to a single int (ex. 7 -> 1 -> 6  to integer
+ * 617 reversing the order of single digits) */
+int list_to_int(Node *head) {
+    /*assume to have an int array to contains all the digits of a integer*/
     int digits[20] = { 0 };
     int n = 0, i = 0, ndigits = 0;
-    while (head) {
+    for (; head; head = head -> next) {
         digits[ndigits++] = head -> data;
-        head = head -> next;
     }
     for(i = ndigits - 1; i >= 0; --i) {
         n = (n * 10) + digits[i];
