@@ -33,14 +33,23 @@ Node *create_list(Node **head, int data[], size_t size) {
 }
 
 void delete_list(Node **head) {
-    while (*head) pop(head);
+    for (; *head;) {
+        pop(head);       
+    }
 }
 
 void print_list(Node* head) {
+    printf("[");
     for (; head; head = head -> next) {
         printf("%d ", head -> data);
     }
-    printf("\n");
+    printf("]\n");
+}
+
+size_t length_list(Node* head) {
+    size_t len = 0;
+    for (; head; head = head -> next, ++len) {}
+    return len;
 }
 #endif
 
