@@ -21,8 +21,8 @@ setofstacks *create_setofstacks(setofstacks **ppset, size_t size) {
     return pset;
 }
 
-/*a special type of push : the new element will be pushed in the last stack of the set that is not full or a new stack of the set will be created to 
- * contain it*/
+/*a special type of push : the new element will be pushed in the last stack of the set that is not full or a new stack of the set 
+ * will be created to contain it*/
 void setofstacks_push(setofstacks *pset, int data) {
     size_t sz = pset -> sz;
     size_t nstacks = pset -> nstacks, i;
