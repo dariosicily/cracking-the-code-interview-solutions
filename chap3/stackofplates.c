@@ -46,12 +46,13 @@ void setofstacks_push(setofstacks *pset, int data) {
         if (nstacks == 0) {
             pset -> stacks = (Node**)malloc(sizeof(Node*));
         } else {
-            pset -> stacks = (Node**)realloc(pset -> stacks, nstacks + 1);
+            pset -> stacks = (Node**) realloc(pset -> stacks, 
+                    sizeof(Node*) *(nstacks + 1));
         }
         (pset -> stacks)[index] = newstack;
         ++(pset -> nstacks);
-
-
+    } else {
+        push(&((pset -> stacks)[index]), data);
     }
 }
 /*
@@ -67,9 +68,9 @@ int popAt(size_t index) {
 void delete_setofstacks(setofstacks *set) {
     size_t nstacks = set -> nstacks, i;
     Node **stacks = set -> stacks;
-    
     if (stacks) {
         for (i = 0; i < nstacks; ++i) {
+            delete_list(&stacks[i]);
             free(stacks[i]);
         }
         free(stacks);
@@ -83,20 +84,28 @@ void print_setofstacks(setofstacks set) {
     size_t nstacks = set.nstacks, i;
 
     printf("[");
-    for (i = 0; i < nstacks; ++i) {
+    if (nstacks > 0) {
+        print_list(stacks[0]);
+    }
+    for (i = 1; i < nstacks; ++i) {
         if (stacks[i]) {
+            printf(",");
             print_list(stacks[i]);
         }
     }
-    printf("]\n");
+    printf("]");
 
 }
 
 int main() {
     setofstacks *set;
-    set = create_setofstacks(&set, 1);
+    set = create_setofstacks(&set, 2);
     print_setofstacks(*set);
+    printf("\n");
     setofstacks_push(set, 100);
+    setofstacks_push(set, 200);
+    setofstacks_push(set, 300);
+    /*setofstacks_push(set, 300);*/
     print_setofstacks(*set);
     delete_setofstacks(set);
     return 0;

@@ -40,10 +40,14 @@ void delete_list(Node **head) {
 
 void print_list(Node* head) {
     printf("[");
-    for (; head; head = head -> next) {
-        printf("%d ", head -> data);
+    if (head) {
+        printf("%d", head -> data);
+        head = head -> next;
     }
-    printf("]\n");
+    for (; head; head = head -> next) {
+        printf(",%d", head -> data);
+    }
+    printf("]");
 }
 
 size_t length_list(Node* head) {
