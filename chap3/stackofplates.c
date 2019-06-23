@@ -37,6 +37,8 @@ void setofstacks_push(setofstacks *pset, int data) {
             break;
         }
     }
+    /*index = -1 means no stack to store data, so create a new stack and
+     * set index to the new stack*/
     if (index == -1) {
         
         /*create a new stack*/
@@ -55,14 +57,39 @@ void setofstacks_push(setofstacks *pset, int data) {
         push(&((pset -> stacks)[index]), data);
     }
 }
-/*
-int setofstacks_pop() {
+/*a special type of pop : the element will be extracted from the first stack of the set that is not empty*/
+int setofstacks_pop(setofstacks *pset) {
+    size_t nstacks = pset -> nstacks, i;
+    Node **stacks = pset -> stacks;
 
+    for (i = 0; i < nstacks; ++i) {
+        if (length_list(stacks[i])) {
+            return pop(&stacks[i]);            
+        }
+    }
+    /* all the stacks are empty */
+    printf("setofstacks_pop error: the stack is empty\n");
+    return -1;
 }
 
-int popAt(size_t index) {
+/*a special type of pop : the element will be extracted from the index stack of the set*/
+int setofstacks_popAt(setofstacks *pset, size_t index) {
+    size_t nstacks = pset -> nstacks;
+    Node **stacks = pset -> stacks;
 
-}*/
+    if (index >= nstacks) {
+        printf("setofstacks_popAt error: index too high\n");
+        return -1;
+    }
+
+    if (length_list(stacks[index])) {
+            return pop(&stacks[index]);            
+    }
+    /* the stack is empty */
+    printf("error: the stack is empty");
+    return -1;
+
+}
 
 /* function that deletes all the stacks*/
 void delete_setofstacks(setofstacks *set) {
@@ -105,8 +132,14 @@ int main() {
     setofstacks_push(set, 100);
     setofstacks_push(set, 200);
     setofstacks_push(set, 300);
-    /*setofstacks_push(set, 300);*/
     print_setofstacks(*set);
+    printf("\n");
+    setofstacks_pop(set);
+    print_setofstacks(*set);
+    printf("\n");
+    setofstacks_popAt(set, 1);
+    print_setofstacks(*set);
+    printf("\n");
     delete_setofstacks(set);
     return 0;
 }
