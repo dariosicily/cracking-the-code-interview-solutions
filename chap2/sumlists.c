@@ -26,7 +26,9 @@ int main() {
     create_list(&first, datafirst, size);
     create_list(&second, datasecond, size);
     print_list(first);
+    printf("\n");
     print_list(second);
+    printf("\n");
     printf("The sum of the two lists is %d\n", 
             list_to_int(first) + list_to_int(second));
     delete_list(&first);

@@ -32,6 +32,7 @@ int main() {
     Node *head = 0;
     create_list(&head, data, size);
     print_list(head);
+    printf("\n");
     remove_the_element(&head, find_the_nth_node(head, 3));
     print_list(head);
     delete_list(&head);

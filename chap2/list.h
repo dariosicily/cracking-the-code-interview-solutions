@@ -11,7 +11,7 @@ struct Node {
 typedef struct Node Node;
 
 void push(Node **head, int data) {
-    Node *new_node = malloc(sizeof(Node));
+    Node *new_node = (Node*) malloc(sizeof(Node));
     new_node -> data = data;
     new_node -> next = *head;
     *head = new_node;
@@ -33,12 +33,14 @@ Node *create_list(Node **head, int data[], size_t size) {
 }
 
 void delete_list(Node **head) {
-    for (; *head;) {
-        pop(head);       
+    if (head) {
+        for (; *head;) {
+            pop(head);       
+        }    
     }
 }
 
-void print_list(Node* head) {
+void print_list(Node *head) {
     printf("[");
     if (head) {
         printf("%d", head -> data);
@@ -50,10 +52,14 @@ void print_list(Node* head) {
     printf("]");
 }
 
-size_t length_list(Node* head) {
+size_t length_list(Node *head) {
     size_t len = 0;
     for (; head; head = head -> next, ++len) {}
     return len;
+}
+
+int is_empty_list(Node *head) {
+    return 0 == length_list(head);
 }
 #endif
 

@@ -38,6 +38,7 @@ int main() {
     Node *head = 0;
     create_list(&head, data, size);
     print_list(head);
+    printf("\n");
     printf("%d\n", is_palindrome(head));
     delete_list(&head);
     return 0;
