@@ -6,7 +6,7 @@
  * compressed string is longer than the original it returns the 
  * original string*/
 const char *compression(const char *original, char *compress) {
-    int len, i, j, nc;
+    size_t len, i, j, nc;
     
     /*memorize the first char of original in compress*/
     char previous = original[0];
@@ -30,7 +30,7 @@ const char *compression(const char *original, char *compress) {
     compress[j++] = nc + '0';
     compress[j] = '\0';
 
-    if ((int)strlen(compress) >= len) return original;
+    if (strlen(compress) >= len) return original;
     return compress;
 }
 
