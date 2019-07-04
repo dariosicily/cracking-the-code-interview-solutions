@@ -55,7 +55,7 @@ const char *compression(const char *original, char *compress) {
             lenbuffer = strlen(buffer);
             if (1 + lenbuffer + strlen(compress) >= len) return original;
             compress[j++] = previous;
-            strcpy(compress + j,buffer);
+            strncpy(compress + j,buffer, lenbuffer);
             j += strlen(buffer);
             nc = 1;
             previous = original[i];
