@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*One away : There are three types of edits that can be performed on strings:
+insert a character, remove a character and replace a character.
+Given two strings, write a function to check if they are one edit (or zero edits) away.*/
 
 static int helper_one_way(const char *str1, const char * str2, 
                           size_t len1, size_t flag) {
