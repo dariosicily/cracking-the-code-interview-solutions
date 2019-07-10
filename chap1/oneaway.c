@@ -22,21 +22,10 @@ static int helper_one_way(const char *str1, const char * str2,
 int one_way(const char *str1, const char *str2) {
     size_t len1 = strlen(str1), len2 = strlen(str2);
     size_t diff = abs(len1 - len2);
-    const char *tmp;
 
     if (diff > 1) return 0;
     if (!diff) return helper_one_way(str1, str2, len1, 0);
-
-    /* swap the strings if len1 > len2 so str1 is always shorter than str2 
-     * add max one char to str1 if the two chars in 
-     * the same position are different*/
-    if (len1 > len2) {
-        tmp = str1;
-        str1 = str2;
-        str2 = tmp;
-        len1 = len2;
-    }
-    
+    if (len1 > len2) return helper_one_way(str2, str1, len2, 1);
     return helper_one_way(str1, str2, len1, 1); 
 }
 

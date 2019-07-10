@@ -19,10 +19,7 @@ static void count_frequencies(const char * s, int * alphabet, int addend) {
  * 1 for s1 and subtract 1 for s2*/
 int are_anagrams(const char *s1, const char *s2) {
     int alphabet[26] = { 0 };
-    size_t l1 = strlen(s1), l2 = strlen(s2), i;
-
-    /*if the strings have different lengths are not anagrams */
-    if (l1 != l2) return 0;
+    size_t i;
 
     /* count the frequencies of characters */
     count_frequencies(s1, alphabet, 1);
