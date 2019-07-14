@@ -2,13 +2,13 @@
 #include <string.h>
 
 /* a simple function which reverses chars in a string*/
-char *reverse(char *s) {
-    size_t length = strlen(s), half = length / 2, i;
-    char tmp;
+char *reverse(char *s) 
+{
+    size_t length = strlen(s), half = length / 2;
 
     /*swap elements inside s*/
-    for (i = 0; i < half; ++i) {
-        tmp = s[i];
+    for (size_t i = 0; i < half; ++i) {
+        char tmp = s[i];
         s[i] = s[length - 1 - i];
         s[length - 1 - i] = tmp;
     }
@@ -16,7 +16,8 @@ char *reverse(char *s) {
 }
 
 
-int main() {
+int main() 
+{
     char s1[] = "abcd";
     char s2[] = "abc";
     printf("%s\n", reverse(s1));

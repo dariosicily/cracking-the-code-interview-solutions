@@ -1,28 +1,34 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
-/* remove all dup chars from a string*/
-char* removeduplicate(char *s) {
-    size_t length = strlen(s), i , j, index = 0;
-    int duplicate;
-
-    for (i = 0; i < length; ++i) {
-
-        /*check if the s[i] char is a duplicate*/
-        duplicate = 0;
-        for (j = 0; j < index; ++j) {
-            if (s[i] == s[j]) {
-                duplicate = 1;
-                break;
+bool contains(const char *s, char c, size_t sz) 
+{ 
+    for (size_t i = 0; i < sz; ++i) {
+            if (s[i] == c) {
+                return true;
             }
-        }
-        if (!duplicate) s[index++] = s[i];
     }
-    s[index] = '\0';
+    return false;
+}
+
+/* remove all duplicate chars from a string*/
+char* removeduplicate(char *s) 
+{
+    size_t nsinglechars = 0;
+
+    for (size_t i = 0; s[i]; ++i) {
+        char c = s[i];
+        if (contains(s, c, nsinglechars) == false) {
+            s[nsinglechars++] = c;           
+        }
+    }
+    s[nsinglechars] = '\0';
     return s;
 }
 
-int main() {
+int main(void) 
+{
     char s1[] = "aabbcad";
     char s2[] = "abcd";
     char s3[] = "abcdaaa";
