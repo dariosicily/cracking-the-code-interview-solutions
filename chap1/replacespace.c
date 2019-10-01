@@ -35,7 +35,7 @@ char *replace_space(char *dest, const char *src)
 
 char *replace_space_alt(const char *src) {
     size_t destlen= str_urlified_len(src);
-    char *dest = (char*) calloc(destlen + 1, sizeof(char));
+    char *dest = calloc(destlen + 1, sizeof(char));
     return replace_space(dest, src);
 }
 
@@ -48,7 +48,7 @@ int main(void)
      * %20 , the user should controll the dimension of string before 
      * using the function replace_space, but the advantage is that 
      * dest string can be indifferently on stack or heap*/
-   char *dest = (char*) calloc(str_urlified_len(src) + 1, sizeof(char));
+   char *dest = calloc(str_urlified_len(src) + 1, sizeof(char));
    printf("%s\n", replace_space(dest, src));
    free(dest);
 

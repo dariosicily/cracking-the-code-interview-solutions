@@ -59,7 +59,7 @@ const char *compression(const char *original, char *compress) {
 
 int main(void) {
     char *original = "aabcccccaaa";
-    char *compressed = (char*) calloc(strlen(original) + 1, sizeof(char));
+    char *compressed = calloc(strlen(original) + 1, sizeof(char));
     printf("%s\n", compression(original, compressed));
     free(compressed);
     return 0;
